@@ -8,4 +8,14 @@ cask "notch-runtime-tools-for-developers" do
   homepage "https://github.com/TurkiNizar/homebrew-notch-runtime"
 
   app "NotchRuntimeToolsForDevs.app"
+
+  postflight do
+    plist_src = "#{staged_path}/launch/com.notch-runtime-tools.plist"
+    plist_dst = File.expand_path("~/Library/LaunchAgents/com.notch-runtime-tools.plist")
+    ohai "Installing LaunchAgent to start Notch Runtime Tools for Developers at login..."
+    system_command "/bin/mkdir", args: ["-p", File.dirname(plist_dst)]
+    system_command "/bin/cp", args: [plist_src, plist_dst]
+    system_command "/bin/launchctl", args: ["unload", plist_dst], sudo: false, must_succeed: false
+    system_command "/bin/launchctl", args: ["load", plist_dst]
+  end
 end
