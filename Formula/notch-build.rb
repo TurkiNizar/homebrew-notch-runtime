@@ -2,9 +2,9 @@ class NotchBuild < Formula
   desc "CLI wrapper that emits build events to Notch Runtime Tools for Developers"
   homepage "https://github.com/TurkiNizar/homebrew-notch-runtime"
 
-  version "0.1.1"
-  url "https://github.com/TurkiNizar/notch-runtime-tools/archive/refs/tags/v#{version}.tar.gz"
-  sha256 "ed58dabbbe9022a4b23c544095afcf42ef1aa79dcce91e1a245266b33289ff2d"
+  version "0.1.7"
+  url "https://github.com/TurkiNizar/notch-runtime-tools/releases/download/v#{version}/notch-build-v#{version}-macos.tar.gz"
+  sha256 "3cceb15cbff4b18278efe751411d77b1989aa7ecf48afc694ab8554ad3ce728b"
 
   license "MIT"
 
