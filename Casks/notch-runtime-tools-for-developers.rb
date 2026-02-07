@@ -1,6 +1,6 @@
 cask "notch-runtime-tools-for-developers" do
-  version "0.1.7"
-  sha256 "9486fbe97384e5672e52907da4960ceca95a235f713b5e9b6ce123c783baedce"
+  version "0.1.8"
+  sha256 "121784cab79b479586c7534c495bfa3f7683fda783e87884f870b7c49e13d03f"
 
   url "https://github.com/TurkiNizar/notch-runtime-tools/releases/download/v#{version}/NotchRuntimeToolsForDevelopers-v#{version}.zip"
   name "Notch Runtime Tools for Developers"
