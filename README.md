@@ -1,35 +1,45 @@
 # Notch Runtime Tools for Developers (Homebrew Tap)
 
-Install the CLI wrapper and the notch HUD app via Homebrew.
+Install the CLI wrapper and notch HUD app via Homebrew.
 
-## Usage
-
+## Install
 ```sh
-brew tap yourorg/notch-runtime
+brew tap TurkiNizar/homebrew-notch-runtime
 brew install notch-build
-# optional app cask (signed/notarized zip or dmg)
-brew install --cask notch-runtime-tools-for-developers
+brew install --cask notch-runtime-tools-for-developers   # unsigned; see Gatekeeper note
 ```
 
-## Formula
+Upgrade:
+```sh
+brew update
+brew upgrade notch-build
+brew upgrade --cask notch-runtime-tools-for-developers
+```
 
-`Formula/notch-build.rb` installs the signed `notch-build` binary.
+Uninstall:
+```sh
+brew uninstall notch-build
+brew uninstall --cask notch-runtime-tools-for-developers
+```
 
-## Cask (optional)
+## Gatekeeper (unsigned)
+The app is unsigned/not notarized. On first launch macOS may block it. Allow by right‑click → Open, or strip quarantine:
+```sh
+xattr -dr com.apple.quarantine /Applications/NotchRuntimeToolsForDevs.app
+```
 
-`Casks/notch-runtime-tools-for-developers.rb` installs the signed `.app` bundle.
+## CLI usage
+Launch the app, then run builds through the wrapper:
+```sh
+notch-build mvn clean install
+notch-build ./gradlew test
+notch-build npm run build
+```
+Quick sanity:
+```sh
+notch-build /bin/true    # success
+notch-build /bin/false   # failure
+```
 
-## Releasing
-
-1) Produce signed/notarized artifacts:
-   - CLI tarball: `notch-build-vX.Y.Z-macos.tar.gz` containing `notch-build`.
-   - App zip/dmg: `NotchRuntimeToolsForDevelopers-X.Y.Z.zip` containing `NotchRuntimeToolsForDevs.app`.
-2) Upload to a stable URL (e.g., GitHub Releases).
-3) Update URL, version, and sha256 in the formula/cask (e.g., `shasum -a 256 file.tar.gz`).
-4) Push the tap repo and test:
-   ```
-   brew untap TurkiNizar/homebrew-notch-runtime  # if already tapped
-   brew tap TurkiNizar/homebrew-notch-runtime
-   brew install notch-build
-   brew install --cask notch-runtime-tools-for-developers
-   ```
+## Release automation
+Tags in `notch-runtime-tools` build/upload artifacts and auto-update this tap (version/URLs/SHA256) via the workflow. Manual edits are normally unnecessary.
