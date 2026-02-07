@@ -1,8 +1,8 @@
 cask "notch-runtime-tools-for-developers" do
-  version "0.1.0"
-  sha256 "REPLACE_WITH_SHA256" # TODO: compute sha256 of the signed/notarized zip/dmg
+  version "0.1.1"
+  sha256 "39f6139c0fc1adcd4770cfc0048aebc8f47953028f459e2d206c1442e0011033"
 
-  url "https://github.com/TurkiNizar/notch-runtime-tools/releases/download/v#{version}/NotchRuntimeToolsForDevelopers-#{version}.zip"
+  url "https://github.com/TurkiNizar/notch-runtime-tools/archive/refs/tags/v#{version}.zip"
   name "Notch Runtime Tools for Developers"
   desc "Notch HUD for build progress"
   homepage "https://github.com/TurkiNizar/homebrew-notch-runtime"
